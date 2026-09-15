@@ -1,0 +1,10 @@
+from openai import OpenAI
+from dotenv import load_dotenv
+load_dotenv()
+client = OpenAI()
+
+models = client.models.list()
+
+for model in models.data:
+    if "embedding" in model.id:
+        print(model.id)
